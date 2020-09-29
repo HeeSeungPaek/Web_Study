@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>개발자 필수 태그</title>
+</head>
+<body>
+	<!-- 
+	회원가입, 게시판 글쓰기...
+	 -->
+	<h3>로그인</h3>
+	
+	<form action="Ex15_login.jsp" method="post">
+		ID : <input type="text" name="id"><br>
+		PWD : <input type="password" name="pwd"><br>
+		
+		<!-- <input type="submit" 	value="전송하기"> -->
+		<input type="reset" 	value="취소하기">
+		<input type="image" 	src="images/ame.jpg"> <!-- 내부적으로 submit! -->
+	</form>
+</body>
+</html>
+
+<!--  
+	form 태그 : 전송을 담당하는 태그 (서버로 Client의 데이터를 담아서)
+	https://www.kangcom.com/member/form.asp
+	
+	
+	네이버 > 회원가입 요청 > 네이버가 클라이언트에게 회원가입 페이지를 전달
+	> 클라이언트가 정보 입력(ID,이름...) > 서버로 데이터를 전송 > 처리 (검증, 삽입)
+	
+	form 태그 : 전송 수단 (submit을 통해서 목적지로 출발)
+	1.배		- method="get"  >>action="Ex15_login.jsp" (목적지 주소로)
+	- 웹사이트 주소창에 Contents의 정보가 노출된다!
+		>> http://localhost:8090/WebClient/Ex15_login.jsp?id=abcd&pwd=1234
+	
+	get방식 : form태그에 데이터를 실어보내는게 아니고, 직접적으로 링크를 만들어 링크에 정보를 실어나르는 방식
+	>> post를 못쓰는 상황에서의 방식
+	<a href="board.jsp?num=100&category=board">1번 글</a>
+	
+	
+	
+	2.비행기	- method="post" >>action="Ex15_login.jsp" (목적지 주소로)
+	- http 프로토콜 내부에 정보(입력값)를 숨겨서 전송
+		>>http://localhost:8090/WebClient/Ex15_login.jsp
+	
+	***
+	선장(기장)역할 : <input type="submit"> / <input type="reset">
+	1. input type="submit" >> 전송
+	2. input type="image"  >> 내부적으로 전송(submit)
+	3. input type="button" >> 내부적으론 아무런 기능이 없다 BUT JavaScript 함수를 생성 > 전송가능
+		함수안에서 >> document.form.submit() 강제 호출 >> submit이 된다.
+-->

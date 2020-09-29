@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS 적용하기</title>
+		<!-- 
+			HTML에 CSS 적용하기
+			1.Inline (태그 속에)
+			2.Internal (페이지 내부 상단)
+			3.External (별도의 외부 파일 + 링크)... common.css
+		 -->
+		 
+		 <style type="text/css">
+		 	body {
+		 		background-color:skyblue;
+		 	}
+		 	h3 {
+		 		color:red;
+		 	}
+		 </style>
+		 
+		 <link rel="stylesheet" href="css/common.css">
+	</head>
+	<body>
+		<p style = "background-color: gold">INLINE STYLE SHEET - 연습할 때에만</p>
+		<h3>Internal 적용</h3>
+		<h3 style="color:green">적용방식은?</h3>
+		<h3>External 적용</h3>
+		<h1>외부 파일에서 스타일 시트를 참조합니다.</h1>
+	</body>
+</html>

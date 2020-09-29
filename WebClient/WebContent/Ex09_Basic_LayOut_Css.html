@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+/* HTML의 모든 요소에 box-sizing : 박스모델 잡을 때 쓰는 것 
+	border-box >> 
+	content-box >> */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* 글씨체 : Arial이 있으면 Arial적용, 없으면 Helvetica, 그래도 없으면 san-serif체로 적용 */
+
+/* Style the header : 위에서 *{박스사이징}이 되어있다.
+     패딩과 텍스트얼라인으로 가운데정렬하여 보여준다. Cities */
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other 
+   nav태그 : 안의 요소들을 좌측으로 정렬하며, width30%*/
+nav {
+  float: left;
+  width: 30%;
+  height: 300px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Style the list inside the menu 
+   unordered 리스트를 써서 앞의 마크를 none으로 없애주며 padding을 0으로 
+      지정해 각 nav속 ul간의 내용간 간격이 없어진다.*/
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #f1f1f1;
+  height: 300px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* 미디어 쿼리를 이용 > nav, article요소가 단순히 옆으로 쌓인다면 화면이 작아질 경우에도
+   header,nav,article이 쌓이도록 하게 하기 위해*/
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</head>
+<body>
+
+<h2>CSS Layout Float</h2>
+<p>In this example, we have created a header, two columns/boxes and a footer. On smaller screens, the columns will stack on top of each other.</p>
+<p>Resize the browser window to see the responsive effect (you will learn more about this in our next chapter - HTML Responsive.)</p>
+
+<header>
+  <h2>Cities</h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+      <li><a href="#">London</a></li>
+      <li><a href="#">Paris</a></li>
+      <li><a href="#">Tokyo</a></li>
+    </ul>
+  </nav>
+  
+  <article>
+    <h1>London</h1>
+    <p>London is the capital city of England. It is the most populous city in the  United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
+    <p>Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.</p>
+  </article>
+</section>
+<!-- ::after가 자동으로 붙는다   -->
+<footer>
+  <p>Footer</p>
+</footer>
+
+</body>
+</html>

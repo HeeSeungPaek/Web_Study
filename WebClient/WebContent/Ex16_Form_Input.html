@@ -1,0 +1,110 @@
+<!-- 외우세요  -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Input 태그 연습()</title>
+</head>
+<body>
+	<form action="">
+		<fieldset>
+			<legend>Text : Password</legend>
+			Text : <input type="text" name="userid" id="userid"><br>
+			Password : <input type="password" name="pwd" maxlength="5"><br>
+			<hr>
+			Text2 : <input type="text" name="data" id="data" maxlength="10"
+						   size="100px" value="여기에 텍스트를 입력해주세요.(초기값)"><br>
+			<hr>
+			readonly(읽기 전용 : 서버로 데이터 전송 가능)
+			<input type="text" name="data2" value="hong" readonly="readonly">
+			<br>
+			disabled(비활성화 : 서버로 데이터 전송 불가능)
+			<input type="text" name="data3" value="kim" disabled="disabled">
+		</fieldset>
+		
+		<fieldset>
+			<legend>체크박스(다중 선택 가능)</legend>
+			농구 : <input type="checkbox" name="sports_1" value="A" checked="checked">
+			야구 : <input type="checkbox" name="sports_2" value="B">
+			축구 : <input type="checkbox" name="sports_3" value="C">
+				<!--
+				서버로 전송하기(GET) : 체크를 다 했을 경우
+				register.jsp?sports_1=A&sports_2=B&sports_3=C
+				
+				register.jsp
+					String str = request.getParameter("sports_1");
+					str 변수에는 A가 들어간다.
+				
+				--------------------------------------
+				
+				name속성을 sports 하나로도 할 수 있다?
+				농구 : <input type="checkbox" name="sports" value="A" checked="checked">
+				야구 : <input type="checkbox" name="sports" value="B">
+				축구 : <input type="checkbox" name="sports" value="C">
+				register.jsp?sports=A&sports=B&sports=C
+				
+				register.jsp
+					String[] str = request.getParameter("sports");
+					str[0] > A
+					str[1] > B
+					str[2] > C
+				
+				 -->
+		</fieldset>
+		
+		<fieldset>
+			<legend>Select태그 (단일 선택 : 연월일)</legend>
+			<select name="year">
+				<option value="2020">2020년</option>
+				<option value="2019">2019년</option>
+				<option value="2018" selected>2018년</option>
+				<option value="2017">2017년</option>
+				<option value="2016">2016년</option>
+			</select>
+			<!-- 
+			?year=2019
+			 -->
+		</fieldset>
+		
+		<fieldset>
+			<legend>Select태그 (접근성이 떨어지는 다중선택 : Checkbox와 비슷한 원리)</legend>
+			<select name="items" multiple>
+				<option value="2020">2020년</option>
+				<option value="2019">2019년</option>
+				<option value="2018" selected>2018년</option>
+				<option value="2017">2017년</option>
+				<option value="2016">2016년</option>
+			</select>
+			<!-- 
+			?items=2020&items=2019
+			 -->
+		</fieldset>
+		
+		<fieldset>
+			<legend>라디오 버튼(단일 선택 : 남, 여 선택 등) : name이 같아야 하나의 Group</legend>
+			남<input type="radio" name="gender" value="1"><br>
+			여<input type="radio" name="gender" value="2" checked><br>
+		</fieldset>
+		
+		<fieldset>
+			<legend>기타 등등</legend>
+			1.화면에 출력이 안되요. (소스는 있어요)<br>
+			<input type="hidden" value="1000" name="hdata">
+			<hr>
+			2.파일 업로드 (선택)<br>
+			<input type="file" name="uploadimage">
+			<hr>
+			3.게시판 글쓰기 (여러줄) : 초기 크기 (rows, cols)<br>
+			<textarea rows="10" cols="10" name="content">입력하세영</textarea>
+			<hr>
+			4.각종 버튼s<br>
+			<input type="button"	value="나 눌러봐" onclick="alert('추석입니다.')"><br>
+			<input type="image"		src="images/tenor.gif"><br>
+			<input type="submit"	value="전송"><br>
+			<input type="reset"		value="입력값 취소"><br>
+		</fieldset>
+		
+	</form>
+</body>
+</html>
