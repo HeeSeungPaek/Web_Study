@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
+* {margin: 0; padding: 0; box-sizing: border-box;}
+body {
+	font-family: 'Black Han Sans', sans-serif;
+	
+	/*flex에 대해서 알아보자.*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	/*vh&vw : vertical height :
+	vh&vw : 뷰포트의 너비값과 높이값에 맞게 "1/100" 단위로 사용할 수 있다.
+	ex) 브라우저 높이값이 1000px일 때 1vh = 10px.
+		브라우저 너비값이 680px일 때 1vw \ 6.8px. */
+	height: 100vh;
+	
+	background: url("19.jpg") no-repeat center;
+	
+	/*background-size로 배경의 가로세로 크기를 정한다.
+	-기본값 : auto
+	-auto : 이미지 크기를 유지
+	-length : 값 두개를 넣어 가로, 세로 크기 / 한 개를 넣어 가로지정, 세로자동 / 퍼센트사용가능
+	-cover : 배경을 사용하는 요소를 다 채울 수 있도록 이미지를 확대 또는 축소. 비율 유지**
+	-contain : 배경을 사용하는 요소를 벗어나지 않는 최대 크기로 이미지 크기 지정. 비율 유지**
+	*/
+	background-size: cover;
+}
+
+body::before {	/* 배경화면 레이어 위에 레이어를 하나 올려 어두움 표시 */
+	content: "";
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0,0,0,.6);
+}
+.signin-form{
+	position: relative;
+	z-index: 2;
+}
+
+.signin-form h1 {
+	font-size: 32px; 
+	color: #fff; 
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+.int-area:first-child {
+	margin-top: 0;
+}
+
+.int-area {
+	width:400px;
+	position: relative;
+}
+
+.int-area input{
+	width: 100%;
+	padding: 20px 10px 10px;
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #999;
+	outline: none;
+	font-size: 18px;
+	color:#fff;
+}
+
+.int-area label {
+	position: absolute; /*.int-area에서 position이 relative >> label은 int-area 시작지점 기준으로 left,top이 먹는다.*/
+	left: 10px;
+	top: 15px;
+	font-size: 18px;
+	color: #999;
+	transition: all .5s ease;
+}
+
+/* 이거 왜 안먹어... */
+.int-area label.warning {
+	color: red !important;
+	animation: warning .3s ease;
+	animation-iteration-count: 3;
+}
+
+@keyframes warning {
+	0% {transfrom: translateX(-8px);}
+	25% {transfrom: translateX(8px);}
+	50% {transfrom: translateX(-8px);}
+	75% {transfrom: translateX(8px);}
+}
+
+
+.int-area input:focus + label,
+.int-area input:valid + label {
+	top: 0;
+	font-size: 13px; color: #166cea;
+}
+
+.btn-area {margin-top: 30px;}
+.btn-area button {
+	width: 100%;
+	height: 50px;
+	background: #166cea;
+	color: #fff;
+	font-size: 20px;
+	border-radius: 25px;
+	cursor: pointer;
+}
+
+.caption {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.caption a {
+	font-size: 15px;
+	color: #999;
+	text-decoration: none;
+}
