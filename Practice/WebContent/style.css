@@ -27,6 +27,13 @@ body {
 	background-size: cover;
 }
 
+/* 가상 요소 셀렉터 ::
+::first-letter	콘텐츠의 첫글자를 선택한다.
+::first-line	콘텐츠의 첫줄을 선택한다. 블록 요소에만 적용할 수 있다.
+::after	콘텐츠의 뒤에 위치하는 공간을 선택한다. 일반적으로 content 프로퍼티와 함께 사용된다.
+::before	콘텐츠의 앞에 위치하는 공간을 선택한다. 일반적으로 content 프로퍼티와 함께 사용된다.
+::selection	드래그한 콘텐츠를 선택한다. iOS Safari 등 일부 브라우저에서 동작 않는다.
+ */
 body::before {	/* 배경화면 레이어 위에 레이어를 하나 올려 어두움 표시 */
 	content: "";
 	position: absolute;
@@ -37,7 +44,8 @@ body::before {	/* 배경화면 레이어 위에 레이어를 하나 올려 어�
 	left: 0;
 	background-color: rgba(0,0,0,.6);
 }
-.signin-form{
+
+.signin-form {
 	position: relative;
 	z-index: 2;
 }
@@ -49,7 +57,7 @@ body::before {	/* 배경화면 레이어 위에 레이어를 하나 올려 어�
 	margin-bottom: 60px;
 }
 
-.int-area:first-child {
+.int-area:first-child { /* 구조 가상 클래스 셀렉터 */
 	margin-top: 0;
 }
 
@@ -92,9 +100,13 @@ body::before {	/* 배경화면 레이어 위에 레이어를 하나 올려 어�
 	75% {transfrom: translateX(8px);}
 }
 
-
+/* 가상 선택자 + 인접 형제 선택자 
+https://poiemaweb.com/css3-selector 
+:valid(셀렉터)	정합성 검증이 성공한 input 요소 또는 form 요소를 선택한다.
+:invalid(셀렉터)	정합성 검증이 실패한 input 요소 또는 form 요소를 선택한다.
+*/
 .int-area input:focus + label,
-.int-area input:valid + label {
+.int-area input:valid + label { 
 	top: 0;
 	font-size: 13px; color: #166cea;
 }
