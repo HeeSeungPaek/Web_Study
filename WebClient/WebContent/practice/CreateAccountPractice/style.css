@@ -20,7 +20,7 @@ body {
 	height: 100vh;
 }
 
-body::before {
+body::before { 
 	position: absolute;
 	content: ""; /* 가짜 속성 */
 	top: 0;
