@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* 모든 요소에 border-box를 먹이면 요소의 테두리까지의 크기를
+	알기 쉽다. */
+}
+
+body {
+	font-family: 'Black Han Sans', sans-serif;
+	background: url("19.jpg") no-repeat center;
+	background-size: cover;
+	
+	display: flex; /* body를 주축으로 Block특성의 컨테이너로 정의한다.
+					>> 타 요소를 body(=flex container)의 안에 손쉽게 정렬하기 위해 */
+	justify-content: center;	/* 주 축(여기서는 body)의 정렬 방식: 가운데 정령 */
+	align-items: center;		/* 교차 축(여기서는 앞으로 올 item)의 정렬: 가운데로*/
+	height: 100vh;
+}
+
+body::before {
+	position: absolute;
+	content: ""; /* 가짜 속성 */
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0,0,0,.6);
+	z-index: 1;
+}
+
+.login {
+	position: relative;
+	z-index: 2;
+}
+
+.login h1 {
+	text-align: center;
+	color: #fff; /* 흰색 */
+	margin-bottom: 30px;
+	font-size: 30px;
+}
+
+.input-zone {
+	width: 300px;
+	position: relative;
+	z-index: 3;
+}
+
+.input-zone input {
+	width: 100%;
+	padding: 20px 10px 10px;
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #999;
+	outline: none;
+	font-size: 18px;
+	color: #fff;
+}
+
+.input-zone label {
+	position: absolute;
+	left: 10px;
+	top: 15px;
+	font-size: 18px;
+	color: #999;
+	transition: all 0.5s ease; /* input:focus될 경우 transition 글씨 */
+}
+
+.input-zone input:focus+label,
+.input-zone input:valid+label { /* :focus > 입력 시 transition먹음.
+								   :valid > 입력된 상태에서 top, 폰트, 컬러 유지 */
+	top: 0;
+	font-size: 13px;
+	color: blue;
+}
+
+.list-zone {
+	
+}
+
+.list-zone select {
+	font-family: 'Black Han Sans', sans-serif;
+	overflow: auto;
+	width: 100%;
+	padding: 20px 10px 10px;
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #999;
+	outline: none;
+	font-size: 15px;
+	color: #999;
+}
+
+.button-zone {
+	margin-top: 30px;
+}
+
+.button-zone button {
+	width: 100%;
+	border-radius: 30px;
+	height: 30px;
+	background-color: #166cea;
+	color: #fff;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+
+

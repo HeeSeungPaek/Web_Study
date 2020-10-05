@@ -5,12 +5,10 @@
 
 <title>Sign in</title>
 <link type="text/css" rel="stylesheet" href="style.css">
-<script src="http://code.jquery.com/jquery-3.4.1.js"></script>
-<!-- script : js의 on('click')과 addClass는 Jquery에서 제공하는 스크립트이므로 head에서 선언 -->
 </head>
 <body>
 	<section class="signin-form">
-		<h1>Sign In</h1>
+		<h1>Create Account</h1>
 		<form action="">
 			<div class="int-area">
 				<input type="text" name="id" id="id" autocomplete="off" required>
@@ -22,36 +20,13 @@
 			</div>
 			
 			<div class="btn-area">
-				<button type="submit">Sign in</button>
+				<button type="submit">Submit</button>
 			</div>
 		</form>
 		<div class="caption">
 			<a href="">비밀번호를 잊어버리셨나요?</a>
 		</div>
 	</section>
-	
-	<script>
-		let id = $('#id');	
-		let pwd = $('#pwd');
-		let btn = $('#btn');
-		
-		$(btn).on('click', function() {
-			
-			if($(id).val() == "") {
-				$(id).next('label').addClass('warning');
-				setTimeout(function() {
-					$('label').removeClass('warning');
-				},1500);
-			}
-			else if($(pw).val() == "") {
-				$(pwd).next('label').addClass('warning');
-				setTimeout(function() {
-					$('label').removeClass('warning');
-				},1500);
-			}
-
-		});
-	</script>
 	
 </body>
 </html>

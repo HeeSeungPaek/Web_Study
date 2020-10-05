@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Sign in</title>
+<link type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="login">
+		<h1>Create Account</h1>
+		
+		<form action="">
+		
+			<div class="input-zone">
+				<input type="text" name="id" id="id" autocomplete="off" required autofocus>
+				<label for="id">아이디</label>
+			</div>
+			
+			<div class="input-zone">
+				<input type="password" name="pwd" id="pwd" autocomplete="off" required>
+				<label for="pwd">비밀번호</label>
+			</div>
+			
+			<div class="input-zone">
+				<input type="password" name="pwd_confirm" id="pwd_confirm" autocomplete="off" required>
+				<label for="pwd">비밀번호 확인</label>
+			</div>
+			
+			 <div class="list-zone">
+			 	<select id="hint" name="hint" fw-filter="isFill" fw-label="hint" fw-msg="" >
+					<option value="hint_01">기억에 남는 추억의 장소는?</option>
+					<option value="hint_02">자신의 인생 좌우명은?</option>
+					<option value="hint_03">자신의 보물 제1호는?</option>
+					<option value="hint_04">가장 기억에 남는 선생님 성함은?</option>
+					<option value="hint_05">타인이 모르는 자신만의 신체비밀이 있다면?</option>
+					<option value="hint_06">추억하고 싶은 날짜가 있다면?</option>
+					<option value="hint_07">받았던 선물 중 기억에 남는 독특한 선물은?</option>
+					<option value="hint_08">유년시절 가장 생각나는 친구 이름은?</option>
+					<option value="hint_09">인상 깊게 읽은 책 이름은?</option>
+					<option value="hint_10">읽은 책 중에서 좋아하는 구절이 있다면?</option>
+					<option value="hint_11">자신이 두번째로 존경하는 인물은?</option>
+					<option value="hint_12">친구들에게 공개하지 않은 어릴 적 별명이 있다면?</option>
+					<option value="hint_13">초등학교 때 기억에 남는 짝꿍 이름은?</option>
+					<option value="hint_14">다시 태어나면 되고 싶은 것은?</option>
+					<option value="hint_15">내가 좋아하는 캐릭터는?</option>
+				</select>
+			</div>
+			
+			<div class="input-zone">
+				<input type="text" name="hint" id="hint" required>
+				<label for="hit">비밀번호 확인 답변</label>
+			</div>
+			
+			<div class="input-zone">
+				<input type="text" name="name" id="name" autocomplete="off" required>
+				<label for="name">이름</label>
+			</div>
+			
+			<div class="input-zone">
+				<input type="text" name="email" id="email" autocomplete="off" required>
+				<label for="email">이메일</label>
+			</div>
+			
+			<div class="button-zone">
+				<button type="submit">Join</button>
+			</div>
+		</form>
+		
+	</div>
+	
+</body>
+</html>

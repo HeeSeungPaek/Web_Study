@@ -4,7 +4,11 @@
 body {
 	font-family: 'Black Han Sans', sans-serif;
 	
-	/*flex에 대해서 알아보자.*/
+	/*flex에 대해서 알아보자. > display:flex > 앞서
+	block, inline등 각각 수직,수평으로 블록들을 쌓아 만들었다.
+	https://heropy.blog/2018/11/24/css-flexible-box/
+	
+	*/
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -47,7 +51,7 @@ body::before {	/* 배경화면 레이어 위에 레이어를 하나 올려 어�
 
 .signin-form {
 	position: relative;
-	z-index: 2;
+	z-index: 2;		/* 회원가입 창이 가장 위로 올라오게 하기 위해  */
 }
 
 .signin-form h1 {
@@ -86,20 +90,6 @@ body::before {	/* 배경화면 레이어 위에 레이어를 하나 올려 어�
 	transition: all .5s ease;
 }
 
-/* 이거 왜 안먹어... */
-.int-area label.warning {
-	color: red !important;
-	animation: warning .3s ease;
-	animation-iteration-count: 3;
-}
-
-@keyframes warning {
-	0% {transfrom: translateX(-8px);}
-	25% {transfrom: translateX(8px);}
-	50% {transfrom: translateX(-8px);}
-	75% {transfrom: translateX(8px);}
-}
-
 /* 가상 선택자 + 인접 형제 선택자 
 https://poiemaweb.com/css3-selector 
 :valid(셀렉터)	정합성 검증이 성공한 input 요소 또는 form 요소를 선택한다.
@@ -111,7 +101,9 @@ https://poiemaweb.com/css3-selector
 	font-size: 13px; color: #166cea;
 }
 
-.btn-area {margin-top: 30px;}
+.btn-area {
+	margin-top: 30px;
+}
 .btn-area button {
 	width: 100%;
 	height: 50px;
