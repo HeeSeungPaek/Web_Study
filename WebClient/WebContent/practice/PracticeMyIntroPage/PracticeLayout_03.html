@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		*{margin:0; padding:0;} /* 이거 실무에서는 절대로 전체선택자를 쓰지 않는다! */ 
+		#wrap {} 
+		#header-wrap {/* 기본값 : 지워도됨 width: 100%; */ /* height:100px; */ background-color: #8d6e63;}
+        #banner-wrap {/* width: 100%; */ /* height:300px; */ background-color: #a1887f;}
+        #content-wrap {/* width: 100%; */ /* height:500px; */ background-color: #bcaaa4;}
+        #footer-wrap {/* width: 100%; */ /* height:100px; */ background-color: #d7ccc8;}
+		
+		.header-container {margin: 0 auto; width: 1000px; height: 100px; background-color: #3e2723;}
+		.banner-container {margin: 0 auto; width: 1000px; height: 300px; background-color: #4e342e;}
+		.content-container {margin: 0 auto; width: 1000px; height: 500px; background-color: #5d4037;}
+		.footer-container {margin: 0 auto; width: 1000px; height: 100px; background-color: #6d4c41;} 
+		
+	</style>
+</head>
+<body>
+	<div id="wrap">
+	
+		<div id="header-wrap">
+			<div class="header-container">헤더</div>
+		</div>
+		
+		<div id="banner-wrap">
+			<div class="banner-container">배너</div>
+		</div>
+		
+		<div id="content-wrap">
+			<div class="content-container">컨텐츠</div>
+		</div>
+		
+		<div id="footer-wrap">
+			<div class="footer-container">발</div>
+		</div>
+		
+	</div>
+</body>
+</html>

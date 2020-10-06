@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>제어문</title>
+	<script type="text/javascript">
+		var a = 8;
+		if (a % 2 == 0) {
+			document.write("Chat수 : " + a + "<br>");
+		} else {
+			document.write("Hol수 : " + a + "<br>");
+		}
+		
+		var c = 7;
+		if(c % 2 == 0){
+			document.write("2의 배수 : " + c + "<br>");
+		} else if(c % 3 == 0) {
+			document.write("3의 배수 : " + c + "<br>");
+		} else {
+			document.write("Guitar : " + c + "<br>");
+		}
+		
+		// for문 사용하여 1~100까지의 합을 구해보자.
+		var sum = 0;
+		for(let i=1; i <= 100; i++){
+			sum+=i;
+		}
+		document.write("sum : " + sum + "<br>");
+		
+		// 중첩 for문 사용 구구단
+		for(let dan=2; dan <= 9; dan++){
+			for(let j=1; j <= 9; j++){
+				document.write(dan + "*" + j + "=" + (dan*j) + "&nbsp;&nbsp;&nbsp;");
+			}
+			document.write("<br>");
+		}
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

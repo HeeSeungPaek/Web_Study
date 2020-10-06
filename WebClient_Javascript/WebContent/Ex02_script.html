@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<link href="icon/favicon.ico" rel="shortcut icon" type="image/x-icon">
 	<script type="text/javascript">
 		//javascript의 해석은 웹 브라우저가 한다. 웹 브라우저 (해석기 + 다양한 객체를 제공)
 		//웹 브라우저 내장 객체 : window 객체(이미 new돼있)
@@ -32,6 +33,13 @@
 		// Ex02_script.html:29 Uncaught TypeError: Cannot read property 'elements' of undefined
 		//var ele = window.document.forms[0].elements[0]; // 당신의 window 창 안 문서 안의 0번째 form의 0번째 element를 콘솔창에 찍겟다.
 		//console.log(ele); 
+		
+		// 순서에 상관없이 프로그래밍 하려면
+		// 함수 기반으로 만들면 된다. 함수는 호출시에 실행되기때문에..
+		function data() {
+			var ele = window.document.forms[0].elements[0];
+			console.log(ele);
+		}
 	</script>
 	</head>
 <body>
@@ -40,13 +48,24 @@
 		<input type="password" name="pwd" value="1004"><br>
 		<input type="submit" value="전송">
 	</form>
-	<input type="button" value="클릭" onclick="">
+	<input type="button" value="클릭" onclick="data()"> <!-- 함수 기반으로 만들었다. -->
 </body>
-<script> // 위의 오류를 방지 : body끝나고 script를 실행하면 되지!
+
+<script type="text/javascript"> // 위의 오류를 방지 : body끝나고 script를 실행하면 되지!
 	var ele = window.document.forms[0].elements[0];
 	console.log(ele);
 	console.log(ele.value);
 	console.log(ele.value.length);
+	
+	// window.document.forms[0].elements[0] 처럼 쓰는 방식은 많이 쓰는 방식은 아니게 됐다.
+	var value = window.document.myform.userid.value;
+	console.log("타입 :" + typeof(value));
+	
+	// 함수 안에 넣어서 보내기 버튼 클릭하면 검증할 때 이런 비슷한 코드를 쓰겠지?
+	//if(value.length < 5) {
+	//	alert("다시 입력해");
+		//ele.value="";
+	//}
 </script>
 
 

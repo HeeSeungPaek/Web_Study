@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>유효성 검증하기</title>
+	<script type="text/javascript">
+		// 유효성 검증
+		// Client가 Server에게 회원가입을 요청 > 회원가입 페이지를 Client에게 전송
+		
+		// 1. id, pwd 입력 > 서버로 전송 > 서버가 값을 받아서 값 검증 > 끝나면 Client에게 응답하는 형태
+		// 2. id, pwd 입력 > 서버로 전송하는 것이 아니라
+		//					Client에서 검증 > 끝나면 Server로 전송 > 응답.
+		// id는 숫자, pwd 5자 이내를 검증하고 싶다.
+		// 2번 방식 선호 : 네트워크 트래픽 (라운드 트립) :서버와의 통신 횟수를 줄이는 것이 목적이기 때문에 클라이언트에서 검증하는 것이 맞다
+		// 이 때 사용하는 것이 javascript코드로 검증.
+		
+		// Client가 검증하지 못하는 것
+		// 중복아이디 검사 : Server와 통신해야 한다. 정보가 DB안에 있기 때문에..
+		function send() {
+			// 유효성 검증 >> 서버로 전송
+			// 1.요소의 정보를 가지고 와서 판단해야한다.
+			// var ele = document.forms[0].elements[0] << 아까 이야기했지 구시대적이라구
+			// 결과론적으로 DOM을 쓸 것이다.
+			
+			// form의 name속성을 활용
+			var inputuserid = document.loginform.txtuserid;
+			// <input type="text" name="txtuserid"> == inputuserid
+			console.log(inputuserid);
+			console.log(inputuserid.value); //사용자가 입력한 값을 뽑을 수 있다.
+			
+			//DOM script 활용 <권장> 편하다. = 계층 트리 구조에서 검색이 용이하다.
+			var userpwd = document.getElementById("txtpwd");
+			console.log(userpwd);
+			console.log(userpwd.value);
+			
+			// 검증 로직 (사용자 마음)
+			// 1.입력 유무
+			// 2.업무 로직에 따라
+			
+			if(inputuserid.value == "" || !(inputuserid.value.length >= 3 && inputuserid.value.length <= 10)){
+				alert("ID를 다시 입력해주세요.");
+				document.loginform.txtuserid.focus(); //focus
+				inputuserid.select(); //블록잡기
+			} else if(userpwd.value == "" || !(userpwd.value.length >= 3 && userpwd.value.length <=10)) {
+				alert("PWD를 다시 입력해주세요.");
+				userpwd.focus();
+				userpwd.select();
+			} else {
+				alert("검증 완료");
+				// 검증이 완료된 시점에서 서버로 전송한다.
+				//아래 form action="Ex08_login.jsp"가 맞는데 지금 현재는 비어있다. 여기서 세팅할 수 있다.
+				document.loginform.action = "Ex08_login.jsp";	// 이 방식은 동적으로 주소를 변환시킬 수 있다.
+				document.loginform.submit();					// form태그가 submit함수를 내장하고 있다는 사실.
+			}
+		}
+	</script>
+</head>
+<body>
+<!-- 
+	<input> 태그에 name속성을 주지 않으면, 서버에서 데이터를 받을 수 없다.
+	<input> 태그에 id를 준다는 말은 >> javascript 또는 css를 통해서 Client 측에서 제어하겠다.
+	일반적으로는 name과 id를 다 적어서 사용한다. <input name="..." id="...">
+-->
+	<form action="" method="get" name="loginform">
+		ID: <input type="text" name="txtuserid"><br>
+		PWD: <input type="password" name="txtpwd" id="txtpwd"><br>
+		<input type="button" value="전송" onclick="send()">
+		<!-- 
+			input type이 submit 또는 image는 전송할 수 있지만
+			type button은 별도로 이벤트를 통해 onclick=함수 식으로 구현해야 한다.		
+		 -->
+	</form>
+</body>
+</html>
