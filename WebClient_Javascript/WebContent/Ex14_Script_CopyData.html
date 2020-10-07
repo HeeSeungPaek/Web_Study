@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		
+			var name = "";
+			var email = "";
+			
+			function initValue(frm){
+				name = frm.username.value;
+				email = frm.checkmail.checked;
+			}
+			
+			function copySend(frm){
+				console.log(frm);	// obj(this.form) : <form>~</form>
+				console.log(frm.username.value + "/" + frm.checkmail.checked);
+				
+				if(frm.copy.checked) { // when copy checked = true
+					initValue(frm);
+					frm.copyname.value = name;		// 홍길동
+					frm.copymail.checked = email;	// true, false
+				} else {
+					alert("선택 해지");
+					frm.copyname.value = "";
+					frm.copymail.checked = false;
+				}
+			}
+		
+		/*
+			// 내가 한거..
+			function copySend(obj){
+				let flag = obj.copy.checked;
+				let username = obj.username.value;
+				let mailcheck = obj.checkmail.checked;
+				
+				console.log(flag + '/' + username + '/' + mailcheck);
+				
+				if(flag){
+					obj.copyname.value = username;
+					obj.copymail.checked = mailcheck;
+				} else {
+					obj.copyname.value = "";
+					obj.copymail.checked = false;
+				}
+			}
+		*/
+		</script>
+	</head>
+	<body>
+			<form>
+			<fieldset>
+				<legend>주문정보</legend>
+				이름:<input type="text"     name="username"><br>
+				    <input type="checkbox" name="checkmail">배송정보 Email수신<br>
+				    <hr>
+				    <input type="checkbox" name="copy" onclick="copySend(this.form)">
+				    주문자 정보와 배송지 정보 동일
+			</fieldset>
+			<hr>
+			<fieldset>
+				<legend>배송지 정보</legend>
+				이름:<input type="text"     name="copyname"><br>
+				    <input type="checkbox" name="copymail">배송정보 Email수신<br>
+			</fieldset>
+		</form>
+	</body>
+</html>

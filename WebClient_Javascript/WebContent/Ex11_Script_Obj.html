@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>웹 브라우저 "내장 객체"</title>
+		<script type="text/javascript">
+			/* 
+				javascript 다양한 내장 객체 제공 : new를 해서 사용해야 하는 것도 있고, 그냥 사용하는 것도 있다.
+				Date(), Array() 등의 객체를 제공받는다.
+				https://www.w3schools.com/js/js_objects.asp
+			*/
+			
+			// Date객체
+			// https://www.w3schools.com/js/js_dates.asp
+			var today = new Date();
+			document.write(today + "<br>");
+			document.write(today.getFullYear() + "<br>");
+			document.write(today.getMonth() + 1 + "<br>");
+			document.write(today.getDate() + "<br>");
+			document.write(today.getHours() + "<br>");
+			document.write(today.getMinutes() + "<br>");
+			document.write(today.getSeconds() + "<hr>");
+			
+			// Math객체
+			// https://www.w3schools.com/js/js_math.asp
+			document.write(Math.random() + "<br>");	// 0이상 1미만의 난수
+			document.write((parseInt(Math.random()*45)+1)+"<br>");
+			
+			document.write(Math.round(3.5678)+"<br>");
+			document.write(Math.max(1,3,7,9,234,2)+"<hr>");
+			
+			// POINT : 문자열 관련 함수
+			// https://www.w3schools.com/js/js_string_methods.asp
+			// 많은 자료들이 거의 문자열로 사용되기에, 문자열 함수를 다루는 것이 필요하다.
+			var str="ABCDEF";
+			
+			with(document){ //블록안에 있는 자원은 앞에 document가 선행되어 있는거다. 
+				write(str + "<br>"); 	//document.write()
+				write(str.length + "<br>");
+				write(str.charAt(2) + "<br>");
+				write(str.indexOf("D") + "<br>");
+				write(str.concat("결합하는concat") + "<hr>");
+				/* 
+					Extracting String Parts
+					
+					- slice(start, end)
+					- substring(start, end)
+					- substr(start, length)
+				*/
+				let str2 = str.replace("E", "ZZZZZZZZZZZZ");
+				write(str2 + "<hr>");
+				write(str.substring(2, 4) + "<br>");	//"ABCDEF" >> CD
+				write(str.substring(1, 1) + "<br>");	// 빈문자
+				write(str.substring(1, 2) + "<br>");	// B
+				write(str.substring(1) + "<hr>");	// BCDEF
+				
+				let strarr = "A B C D";
+				let arr = strarr.split(" ");	// return Array
+				write(arr + "<hr>");			// toString 재정의 되어있음
+				
+				// Today Point
+				// 개선된 for문  java > for(string s : arr){ s 배열의 값 }
+				// javascript      > for(let s in arr){}
+				// c#			   > for(String s in arr){ s 배열의 값 }
+				
+				for(let index in arr){		// 약속 : 개선된 for문의 변수명은 항상 index로 쓰자.
+					//write(index + "<br>");	// 방번호가 나온다!
+					write(arr[index] + "<br>");
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<p>Outside myFunction() carName is undefined.</p>
+	
+	<p id="demo1"></p>
+	<p id="demo2"></p>
+	<p id="demo3"></p>
+	<p id="demo4"></p>
+</body>
+<script>
+	var gname = "world";
+	
+	myFunction();
+
+	function myFunction() {
+		aaa = "아무개";	// 선언부가 없어도 js는 유연하게 인정한다.
+						// 하지만, 함수 안에 타입이 없는 변수를 만들면 글로벌이 된다.
+						// 그래서 이렇게 선언부 없는 코드는 허용은 되지만 [사용하지 않도록] 한다.
+		console.log(aaa);
+		
+		var carName = "Volvo";	// Local Variable
+		document.getElementById("demo1").innerHTML = typeof(carName) + " " + carName + "<hr>";
+		document.getElementById("demo3").innerHTML = typeof(gname) + " " + gname;
+	}
+	// Global V test
+	document.getElementById("demo2").innerHTML = typeof(carName) + "<hr>";
+	document.getElementById("demo4").innerHTML = typeof(gname);
+	/* 
+		이전에는 var만 사용했다.
+		
+		ES2015에서 두 가지 키워드를 만들었다 : let 과 const
+		기존에는		
+		1. Global
+		2. Local
+		3. 없었다. 그래서 만든게 Block : 이걸 위해 let 과 const
+		
+	*/
+</script>
+</html>

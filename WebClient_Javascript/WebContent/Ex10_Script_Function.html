@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Javascript 함수 (문자열, 숫자를 다루는)</title>
+		<script type="text/javascript">
+		
+			var str = "10+20+30";
+			document.write("문자열 str : " + str + "<br>");
+			// 1. eval() : 문자형 수식을 계산식으로 바꿔준다.
+			// "10+20+30" >> 10+20+30 >> 계산 >> 결과를 리턴
+			// "10+20A+30" >> 이런 건 Error
+			// 문자형태의 껍질을 벗길 때 숫자와 수식만 있어야 적용이 가능하다.
+			document.write("eval() 적용 결과 : " + eval(str) + "<br>");
+			
+			// 2. isNaN() (is Not a Number?) : 너 숫자 아니니? 아니면 true, 숫자면 false
+			document.write('isNaN("12345") : ' + isNaN('12345') + '<br>');
+			document.write('isNaN("12345A") : ' + isNaN('12345A') + '<br>');
+			document.write('isNaN("대한민국") : ' + isNaN('대한민국') + '<br>');
+			document.write("isNaN('12345') : " + isNaN('12345') + "<hr>");
+			
+			// 문자열 함수
+			// https://www.w3schools.com/jsref/jsref_obj_string.asp
+			
+			// 숫자 함수
+			// https://www.w3schools.com/jsref/jsref_obj_number.asp
+			// https://www.w3schools.com/js/js_number_methods.asp
+			let i = "100";
+			let j = "200";
+			document.write("결합 : " + i + j);
+			document.write("결합 : " + (i+j));	// 문자끼리 +는 결합
+			// Number() : 문자형 숫자를 숫자형으로 변환
+			document.write("<br>숫자 변환 : " + (Number(i)+Number(j))); // 숫자로 바꿔 사용 가능
+			
+			/* 
+			The Number() method
+			The parseInt() method
+			The parseFloat() method 
+			*/
+			
+			/* 
+			Common HTML Events
+			Here is a list of some common HTML events:
+			Event			Description
+			
+			- onchange		An HTML element has been changed
+			- onclick		The	user clicks an HTML element
+			- onmouseover	The user moves the mouse over an HTML element
+			- onmouseout	The user moves the mouse away from an HTML element
+			- onkeydown		The user pushes a keyboard key
+			- onload****	The browser has finished loading the page
+			> onload : HTML에서 body 안에 있는 모든 요소를 웹브라우저 메모리에 로딩되고 난 후에 자동으로 호출되는 이벤트.
+			> = 모든 요소는 계층 트리(DOM) 형태로 메모리에 있다는 보장
+			
+			- onblur() 		포커스가 요소를 떠날 때 발생하는 이벤트.
+			- onfocus() 	요소에 포커스가 들어갈 때 발생하는 이벤트.
+			
+			// 이외의 더 많은 DOM 이벤트 : https://www.w3schools.com/jsref/dom_obj_event.asp
+			*/
+			function focusFunc(){
+				document.getElementById("myinput").style.background = "violet";
+			}
+			
+			function blurFunc(){
+				document.getElementById("myinput").style.background = "white";
+			}
+			
+			function selectTag(){
+				var val = document.myform.sel.value;
+				alert(val);
+			}
+			
+			// Point : javascript도 this가 있다. 중요하다.
+			// this( = 요소자신 )
+			function changeColor(obj){
+				console.log(obj);
+				obj.style.backgroundColor="gold";
+			}
+			
+			function changeColor2(obj){
+				console.log(obj);
+				obj.style.backgroundColor="white";
+			}
+			
+			//순서가 있기에 undefiend뜰거야
+			//var data = document.myform.money.value;
+			//console.log(isNaN(data));
+			
+			function load(){ // 이 함수는 body가 브라우저 상의 메모리에 다 올라가면 자동으로 실행
+				var data = document.myform.money.value;
+				console.log(isNaN(data));
+			}
+			
+		</script>
+	</head>
+	<body onload="load()">
+		<form action="#" name="myform">
+	
+			<input type="text" id="myinput" name="myinput" onfocus="focusFunc()"
+				onblur="blurFunc()">
+			<br> 
+			<select name="sel" onchange="selectTag()">
+				<option value="A">AA</option>
+				<option value="B">BB</option>
+				<option value="C">CC</option>
+				<option value="D">DD</option>
+			</select>
+			<hr>
+	
+			<input type="text" onmouseover="changeColor(this)" onmouseout="changeColor2(this)"> 
+			<br> 
+			<input type="text" onkeypress="alert('안대ㅐㅐㅐ')"> 
+			<br>
+			<input type="text" value="1000" name="money">
+		</form>
+	</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			//while
+			var i = 1;
+			var sum = 0;
+			while (i<=10){
+				sum+=i;
+				i++;
+			}
+			document.write("sum:" + sum + "<br>");
+			
+			// for
+			var sum2 = 0;
+			for(let i=0; i <= 10; i++){
+				if(i % 3 === 0){
+					console.log("i : " + i);
+					continue;
+				}
+				console.log("for : i - " + i);
+				sum2+=i;
+			}
+			document.write("sum2 : " + sum2 + "<br>");
+			
+			// do~while
+			var a = 1;
+			do{
+				document.write(a + "<br>");
+				a++;
+			}while(a < 11);
+			
+			// 제어문(java 동일) : 개선된 for문 제외
+			// Java의 Array : 정적(Array), 동적(Collection) : 다양한 Class를 가지고 있다.
+			// int[] arr = new int[10];
+			// int[] arr = new int[]{10,20,30};
+			// int[] arr = {10, 20, 30};
+			
+			// ArrayList al = new ArrayList();
+			// al.add(10);
+			// al.add(20);
+			
+			// 하지만 자바스크립트는 정적과 동적을 Array 하나로 다 담을 수 있다.
+			// var arr = []; 일반적으로 많이 사용되는 방식
+			
+			var arr = [10,20,30]; // int[] arr = {10, 20, 30};
+			for(let i = 0; i < arr.length; i++) {
+				document.write(arr[i] + "<br>");
+			}
+			
+			for(let index in arr){
+				console.log("ㅎㅎ" + arr[index]);
+			}
+			
+			// int[] arr = new int[10]; 자바에서는
+			// 10개의 정수 방을 만들고, 디폴트값 0으로 초기화
+			
+			var eng = new Array(3);	// 나쁜 선언 : 타입이 설정되어 있지 않기 때문에, 초기화되지 않는다.
+			for(let i = 0; i < eng.length; i++) {
+				document.write(eng[i] + "<br>");	// 초기화 되지 않았기 때문에 undefined된다.
+			}
+
+			eng[0] = 100;	// 초기화 해주면, eng배열의 타입이 잡힌다.
+			eng[1] = 200;
+			eng[2] = 300;
+			
+			for(let i = 0; i < eng.length; i++) {
+				document.write(eng[i] + "<br>");
+			}
+			
+			// 배열을 생성하는 좋은 방식 : 빈 배열을 만드는 것.
+			var arr2 = [];
+			arr2.push(10);
+			arr2.push(20);
+			
+			// 1. 배열 선언하는 기본 방법
+			var array = new Array(5);	// bad
+			
+			// 2. 배열 생성 + 초기화
+			var array2 = new Array(10,20,30);	// bad
+			
+			// 3. 값으로 배열 초기화 (자바스크립트가 선호) : 내부적으로는 stack구조 > Push&Pop
+			var array3 = [1, 2, 3];	// good
+			var array4 = [];		// 이것도 good, 필요할 때 push로 초기화
+			array4.push(10);
+			document.write(array4.pop());
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
