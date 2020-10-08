@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		window.onload=function() {
+			var btnobj = document.getElementById("btnGetData");
+			// 이벤트 처리는 동적으로 해야 한다. > 스크립트 내적으로!
+			// 인라인 방식의 이벤트처리는 앞으로 지양한다.
+			btnobj.onclick = function(){
+				var txtmsg = document.getElementById("txtmessage");
+				var str = "";
+				str += "ID : " + txtmsg.getAttribute("id"); // id값
+				str += "\n value : " + txtmsg.getAttribute("value"); // value값
+				str += "\n value : " + txtmsg.value;
+				str += "\n length : " + txtmsg.value.length;
+				console.log(str);
+			}
+			
+			document.getElementById("btnCreate").onclick = function(){
+				var txtname = document.createElement("input");
+				txtname.setAttribute("type","text");
+				txtname.setAttribute("id","txtbox");
+				txtname.setAttribute("value","홍길동");
+				document.body.appendChild(txtname);
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="txtmessage" value="hello">
+	<input type="button" id="btnGetData" value="getInfo">
+	<hr>
+	<input type="button" id="btnCreate" value="동적 생성">
+	<!-- 위으 마지막버튼이 여기 붙겠죠? -->
+</body>
+</html>

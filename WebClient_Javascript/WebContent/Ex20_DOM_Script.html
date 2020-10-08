@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style type="text/css">
+	
+		.democlass {
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<div id="div">
+		<h1 class="democlass">line1</h1>
+		<h1 class="democlass">line2</h1>
+		<h1 class="democlass">line3</h1>
+	</div>
+</body>
+	<script type="text/javascript">
+		//var arr = [1,2];
+		//arr[0]
+		//document.getElementsByTagName("h1")[0].removeAttribute("class");
+		
+		//일반 for, 개선된 for, arr.forEach(), arr.map() , Arrow표현(줄임표현) 해야해요
+		
+		var arr = document.getElementsByTagName("h1");
+		
+		for(let index in arr){
+			console.log(index + "/" + arr.length + "/" + arr[arr.length-1]);
+			//document.getElementById("div").removeChild(arr[index]);
+			if(arr.length>0){
+				document.getElementById("div").removeChild(arr[arr.length-1]);
+			}
+			
+		}
+		/* 
+			var len = arr.length;
+			for(let i = 0; i < len; i++){
+				arr[arr.length-1].remove(); //어렵네
+			}
+		*/
+	</script>
+</html>
