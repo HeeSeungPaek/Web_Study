@@ -5,8 +5,24 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<script type="text/javascript">
+		function displateDate(){
+			console.log("call");
+			document.getElementById("demo").innerHTML = new Date();
+		}
 		
-
+		// 함수 호출 : body 안에 요소가 실행(로드)되기 전에 함수 호출
+		
+		// 익명함수
+		// document.getElementById("mybtn").onclick = function(){};
+		
+		window.onload = function(){
+			console.log("load");
+			//document.getElementById("mybtn").onclick = displateDate(); 
+			// displateDate()로 쓰면 함수를 호출해버린다.
+			// 해결방식 : 괄호가 없는 함수이름을 붙인다!
+			document.getElementById("mybtn").onclick = displateDate;	// 주의사항! 이렇게 쓸 수 있다.
+		}
+		
 	</script>
 </head>
 <body>
