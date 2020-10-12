@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		
+		//javascript : Array 는 (정적 + Collection)
+		
+		var array = ['포도', '사과'];
+		document.write(array.toString() + "<br>"); //toString() 재정의 (배열값을 출력)
+		document.write(array + "<br> toString() default<br>");
+			
+		for(let index = 0; index < array.length; index++){
+			document.write(array[index] + "<br>");
+		}	
+		
+		// Javascript의 Array가 가지고 있는 동적인 영역을 살펴보자.
+		array[2] = '바나나';	//동적으로 데이터를 추가할 수 있다.
+		document.write(array.toString() + "<br>" + array.length + "<br>");
+		
+		
+		array[10] = '애플망고';	//동적으로 데이터를 추가할 수 있다.
+		document.write(array.toString() + "<br>" + array.length + "<br>");
+		// 출력 결과 : 포도,사과,바나나,,,,,,,,애플망고
+		document.write(array[9] + "_array[9]<br>");	// undefined_array[9]
+		array[9] = "배";
+		document.write("초기화 했다 : " + array[9] + "_array[9]<br>");	// 초기화 했다 : 배_array[9]
+		
+		
+		var array2 = ["one", "two", "three"];
+		document.write(array2.length + "<br>");
+		
+		array2.length = 2; //좋은 코드는 아니다. 유연함을 보려고 하는 것. 
+		document.write(array2.toString() + "<br>" + array2.length + "<br>"); 
+		// 방을 하나 버린다.. [one,two]
+		
+		array2.length = 4;
+		document.write(array2.toString() + "<br>" + array2.length + "<br>"); //one,two,,
+		document.write(array2[2]); //undefined
+		
+		//Point : 자바스크립트의 Array는 자료구조 상 Stack이다. >> LIFO
+		// >> push(), pop() 함수를 사용해 넣고 빼는 것이 전형적이다.
+		array2.push('four');
+		document.write("push : "+array2.toString() + "<br>" + array2.length + "<br>");
+		// one,two,,,four
+		document.write(array2.pop() + "<br>");	//LIFO : four
+		document.write(array2.pop() + "<br>");	//undefined
+		document.write(array2.pop() + "<br>");	//undefined
+		document.write(array2.pop() + "<br>");	//two
+		document.write(array2.pop() + "<br>");	//one
+		
+		var list=[];	//선언하고
+		list.push('a');	//필요하면 삽입하고,
+		list.push('b');
+		list.push('c');
+		document.write("<br>" + list.pop());	//필요하면 꺼내지운다.
+	</script>
+</head>
+<body>
+
+</body>
+</html>

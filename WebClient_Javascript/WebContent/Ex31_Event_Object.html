@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+	/* 
+		try{
+			  0/0 >> 자동으로 예외 객체가 생성되고 ... catch 전달
+		}catch(Exception e){
+			
+		}
+		
+		javascript도 어떠한 "사건"이 발생하면 (click , mouseover) 
+		자동으로(내부적으로) Event라는 객체를 자동으로 생성한다. 
+		>> 객체 안에 다양한 정보를 가지고 있다. (누가 사건을 일으켰는지 , 사건 주체 등의 다양한 정보 ...)
+		
+		https://cafe.naver.com/springbit/527
+	*/
+		window.onload = function() {
+			var btn = document.getElementById("mybtn");
+			btn.onclick = function(e){  //e 변수가 Event 객체 받는다 ...
+				//이벤트가 발생되면 이벤트의 정보를 담고 있는 객체 생성
+				console.log(e.type); // type은 이벤트의 종류 : click이 나옴
+				console.log(e.target); //<span>눌러봐</span>
+				console.log(e.currentTarget); //<button id="mybtn"><span>눌러봐</span></button>
+				console.log(e.x); //좌표값
+				console.log(e.y); //좌표값
+			}
+			var btn2 = document.getElementById("mybtn2");
+			
+			var handler = function(event){ 
+				switch(event.type) //event.type()
+				{ 
+				  case "click": //코드 
+				  		alert("클릭");
+						break; 
+				  case "mouseover": //코드 
+				  		event.target.style.backgroundColor = "red"; //event 객체 통해서 제어 많이 씀
+				  		break; 
+				  case "mouseout": //코드 
+				  		event.target.style.backgroundColor = ""; 
+				  		break; 
+				  } 
+				};
+		  	btn2.onclick = handler; 
+		  	btn2.onmouseover = handler; 
+		  	btn2.onmouseout = handler;
+			/*
+		  	btn2.onclick = func(); 
+		  	btn2.onmouseover = func2(); 
+		  	btn2.onmouseout = func3();
+		  	*/
+		}
+	</script>
+</head>
+<body>
+	<button id="mybtn"><span>눌러봐</span></button>
+	<br>
+	<button id="mybtn2">눌러봐2</button>
+</body>
+</html>

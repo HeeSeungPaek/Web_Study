@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>KEY POINT</title>
+	<script type="text/javascript">
+		// 1. 자바스크립트의 배열 >> [] 이렇게 만듦  => var arr = []; arr.push();, arr.pop();
+		// 2. JSON 객체 >> {} 이렇게 만듦 => var obj = {}; obj.속성명
+		
+		// 실제로 외부 API의 데이터는 굉장히 복잡할 수 있다.
+		// 원하는 데이터가 배열과 객체로 혼합되어 있기 때문이다.
+		// 중요 ** 객체 배열 **
+		
+		//학생들의 시험점수를 담을 수 있는 배열을 만들고 시퍼잉
+		var students = [];
+		students.push({이름:"백희승",국어:80,영어:60});
+		students.push({이름:"희승백",국어:100,영어:50});
+		students.push({이름:"정순심",국어:10,영어:30});
+		// 배열 안에 객체가 담긴다. [{}, {}, {}]
+		
+		// 기존에 만들어진 객체에 함수 추가
+		for(let index in students){
+			console.log(students[index]);	// 한개한개가 오브젝트이다!.
+			students[index].getSum = function(){return this.국어 + this.영어}; // 각각 함수를 만들어준다.
+			students[index].getAvg = function(){return this.getSum()/2;}
+		}
+		
+		console.log(students);
+		
+		for(let index in students){
+			console.log(students[index].이름);
+			console.log(students[index].getSum());
+			console.log(students[index].getAvg());
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		/* 
+		JSON객체를 문자열로 변환하기 :				JSON.stringfy(JSON객체);
+		JSON형식의 문자열을 JSON객체로 변환하기 :		JSON.parse(JSON형식의문자열);
+		*/
+	
+		var myObj={name:"john", age:31, city:"seoul"};
+		console.log(myObj);
+		// JSON 객체를 문자열 데이터로 변환할 수 있다.
+		// login.jsp?name=john&age=31&city=seoul
+		var myJsonString = JSON.stringify(myObj);	//myObj를 문자열로 변환한다!
+		console.log(myJsonString);	
+		//중요 >> 리터럴 형식을 가진 문자열 {"name":"john","age":31,"city":"seoul"}
+		
+		var myObj2 = '{"name":"john","age":31,"city":"seoul"}';	
+		// JSON형식의 문자데이터 - Property는 변환할 때 더블쿼테이션이 있어야한다.
+		console.log(myObj2);
+		
+		var myJson = JSON.parse(myObj2);	//JSON형식의 문자열을 JSON객체로 변환한다!
+		console.log(myJson);
+		console.log(myJson.name);	//객체.속성명
+		console.log(myJson["name"]);	//객체["키or프로퍼티명"];
+		
+		/* 
+		확장자
+		HTML > index.htm, index.html
+		CSS > common.css
+		JS > common.js
+		JSON > common.json -> 형식 : (MIME) > application/json 형식으로 잡힌다.
+		xml > common.xml
+		*/
+		
+		// 차량이름 >> 모델명 추출하기
+		// Ford, fie, focus, mustang...
+		let myCars;
+		var str;
+		myCars = {
+		  "name":"John",
+		  "age":30,
+		  "cars": [
+		    		{"name":"Ford", "models":["Fiesta", "Focus", "Mustang"]},
+		    		{"name":"BMW", "models":["320", "X3", "X5"]},
+		    		{"name":"Fiat", "models":["500", "Panda"] }
+		  		  ],
+		}
+		
+		
+		var carList = myCars.cars;
+		
+		for(let key in carList){
+			console.log(carList[key].name + " 회사의 " + "차량 모델 : " + carList[key].models);
+		}
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>

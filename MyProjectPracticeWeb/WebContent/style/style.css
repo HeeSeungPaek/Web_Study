@@ -3,15 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap'); /*Font 'Staatliches'*/
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&family=Staatliches&display=swap'); /*'Noto Sans KR'*/
 
-body {
-    margin:0 auto;
-}
-div {
-    display: block;
-}
-a {
-    text-decoration: none;
-}
+body {margin:0 auto;}
+div {display: block;}
+a {text-decoration: none;}
 
 /*전체 레이아웃은 wrap 아래 header와 main-wrapper로 구성.*/
 .wrap {box-sizing: border-box; font-family: 'Playfair Display', 'Noto Sans KR', sans-serif;  text-align: center;}
@@ -26,7 +20,7 @@ a {
 
 /*content section of 77% in Layout*/
 .about-me {background-color:#FAEBD7;  padding: 40px; text-align: left; display: flex;}
-.conetent1 {height: ;} 
+.conetent1 {height: ;} /*구성요소에 따라 height가 따라가게끔 하자*/
 .conetent2 {height: ;}
 .conetent3 {height: ;}
 
@@ -54,7 +48,7 @@ hr {border-color: rgba(0,0,0,0.08); }
 .link-on-mine {color:#D67553;}
 .link-on-mine:hover {text-decoration: underline;}
 
-.img-profile {margin-left: 20px; max-height:1000px; max-width:200px;}
+.img-profile {margin-left: 20px; max-height: 250px; max-width:350px;}
 
 /*Media Query...*/
 /*@media (max-width: 400px){
