@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		/* 
+			javascript : for(let index in Array){ Array[index] }
+			javascript (Object) : for(let key in jsonObj){jsonObj[key]} 
+			javascript : array.forEach(function(currentValue, index, arr){})
+			
+			Jquery : each() 반복구문 = iterator
+			Jquery의 each문은 3가지 문법 유형으로 나누어진다.
+				1번. $(selector).each(function(){this 활용})
+				2번. $(selector).each(function(index){this 활용})
+				3번. $(selector).each(function(index, element){element}); << 제일 편하기에 많이 사용된다.
+		*/
+		
+		
+		$(document).ready(function(){
+			
+			//1번 유형
+			$("p").each(function(){
+				// callback 함수가 3번 호출된다.
+				console.log("this : " + $(this).text());
+			});
+			
+			//2번 유형
+			$("p").each(function(index){
+				console.log("index : " + index);
+				console.log("this : " + $(this).text());
+			});
+			
+			//3번 유형
+			$("p").each(function(index, element){
+				console.log("index : " + index);
+				console.log(element);
+				console.log("this : " + $(this).text());
+			});
+		});
+
+			
+	</script>
+</head>
+<body>
+	<p>java</p>
+	<p>jsp</p>
+	<p>orac</p>
+	<input type="button" value="click" id="btn">
+</body>
+</html>

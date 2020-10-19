@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		#div1{
+			outline: 2px dashed black;
+			outline-offset: -10px;
+			text-align: center;
+			transition: all .5s ease-in-out;
+			width: 300px;
+			height: 300px;
+			background-color: white;
+		}
+		#drag1 {
+			margin: 50px;
+		}
+	</style>
+	<script>
+	//https://developer.mozilla.org/ko/docs/Web/API/HTML_%EB%93%9C%EB%9E%98%EA%B7%B8_%EC%95%A4_%EB%93%9C%EB%A1%AD_API
+	
+	
+	// draggable 요소를 dropable 요소에 dragover 시, 브라우저의 기본적인 이벤트의 발생을 방지함으로써
+	// draggable 요소를 정상적으로 drop할 수 있게 해준다
+	function allowDrop(ev) {
+		var div = ev.target;
+		ev.preventDefault();
+		
+		if(ev.type === "dragover"){
+			console.log(ev+":allowDrop 시작 / " + ev.type);
+			div.style.backgroundColor="gray";
+			div.style.outlineOffset = "-20px";
+		}else if(ev.type === "dragleave"){
+			console.log(ev+":allowDrop 시작 / " + ev.type);
+			div.style.backgroundColor="white";
+			div.style.outlineOffset = "-10px";
+		}
+	}
+	
+	// draggable 요소 dragstart 시, drag하고 있는 요소의 데이터를
+	// ev.dataTransfer객체를 이용 -> "text"형식의 id값을 set한다.
+	function drag(ev) {	
+		console.log(ev+":drag / " + ev.target);
+	 	ev.dataTransfer.setData("text", ev.target.id);
+		console.log("dataTransfer : " + ev.dataTransfer.getData("text"));
+	}
+	
+	function drop(ev) {
+		console.log(ev + ":drop / " + ev.target);
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData("text");
+		ev.target.appendChild(document.getElementById(data));
+	}
+	</script>
+</head>
+<body>
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="allowDrop(event)"></div>
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="allowDrop(event)"></div>
+	<img id="drag1" src="../images/sadfrogissad.gif" draggable="true" ondragstart="drag(event)" width="200" height="200">
+</body>
+</html>

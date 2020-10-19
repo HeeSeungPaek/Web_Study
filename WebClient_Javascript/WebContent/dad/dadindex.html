@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		.content {
+			outline: 2px dashed black;
+			outline-offset: -10px;
+			text-align: center;
+			transition: all .5s ease-in-out;
+			width: 300px;
+			height: 300px;
+			background-color: gray;
+		}
+	</style>
+</head>
+<body>
+	<p>
+	<div class="content">
+	</div>
+	<script type="text/javascript">
+		// jQuery 맛보기
+		// $('.content') 는
+		// document.getElementsByClassName('content'); //배열인거 알죠?
+		// document.getElementsByClassName('content')[0] // 현재 dom의 <div class="content"> 이거
+		// $('#content') >>> document.getElementById('content');
+		// .on("dragover", dragOver) 는 .addEventListener("dragover", dragOver);
+		// jQuery version
+		/*
+		$('.content')
+		  .on("dragover", dragOver)
+		  .on("dragleave", dragOver)
+		  .on("drop", uploadFiles);
+		 */
+		var tar = document.getElementsByClassName('content')[0]; 
+		tar.addEventListener("dragover", dragOver);
+		tar.addEventListener("dragleave", dragOver);
+		tar.addEventListener("drop", uploadFiles);
+		// e.preventDefault(); 현재 이벤트의 [기본 동작]을 중단한다!
+		// e.stopPropagation(); 현재 이벤트가 상위로 전파되지 않도록(버블링을 막는다) 중단한다.
+		
+		function dragOver(ev){
+		  ev.stopPropagation();
+		  ev.preventDefault();
+		  if(ev.type=="dragover"){	//올려놓을때
+			  tar.setAttribute("background-color", "black");
+			  console.log(ev.target);
+		  } else if(ev.type=="dragleave"){ //올려놓았다 떠날때
+			  ev.target.setAttribute("background-color","gray");
+			  ev.target.setAttribute("outline-offset","-10px");
+		  }
+		}
+		 
+		function uploadFiles(ev){
+		 	 ev.stopPropagation();
+		 	 ev.preventDefault();
+		 	 dragOver(ev);
+		}
+		/* javascript version 
+		document.getElementsByClassName("content").addEventListener("dragover", dragOver);
+		document.getElementsByClassName("content").addEventListener("dragleave", dragOver);
+		document.getElementsByClassName("content").addEventListener("drop", uploadFiles);
+		
+		function dragOver(e){
+		  e.stopPropagation();
+		  e.preventDefault();
+		}
+		 
+		function uploadFiles(e){
+		  e.stopPropagation();
+		  e.preventDefault();
+		}
+		*/
+	</script>
+</body>
+</html>

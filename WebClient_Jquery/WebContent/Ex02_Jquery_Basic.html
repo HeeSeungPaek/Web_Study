@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- CDN : 권장 -->
+	<script type="text/javascript">
+		/* window.onload = function(){
+			document.getElementById("btn").onclick = function(){
+				alert("DOMscript");
+			}
+		} */
+		
+		/* 
+		$(document).ready(function(){
+			$('#btn').click(function(){
+				alert(this.value);
+			});
+		});
+		*/
+		
+		// 위의 Jquery문의 단축 표현.
+		$(function(){
+			$('#btn').click(function(){
+				$(this).hide();	// button을 감춰라 -> display: none;
+			});
+		});
+		/* 
+		Basic syntax is: $(selector).action()
+
+			A $ sign to define/access jQuery
+			A (selector) to "query (or find)" HTML elements
+			A jQuery action() to be performed on the element(s)
+		
+		Jquery의 포인트는 CSS에서 배운 "선택자"
+		https://www.w3schools.com/jquery/jquery_selectors.asp
+		*/
+	</script>
+</head>
+<body>
+	<input type="button" id="btn" value="버튼">
+</body>
+</html>

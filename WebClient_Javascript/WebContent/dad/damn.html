@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<style>
+		#div1{
+			outline: 2px dashed black;
+			outline-offset: -10px;
+			text-align: center;
+			transition: all .5s ease-in-out;
+			width: 300px;
+			height: 300px;
+			background-color: gray;
+		}
+	</style>
+</head>
+<body>
+ 
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	<img id="drag1" src="https://t1.daumcdn.net/cfile/tistory/994BEF355CD0313D05?download" 
+	draggable="true" ondragstart="drag(event)" width="200px" height="200px">
+	
+ 	<script>
+ 	
+	var dv = document.getElementById("div1");
+	var im = document.getElementById("drag1");
+	dv.addEventListener("drop",drop);
+	
+	
+	function allowDrop(ev) {
+	    ev.preventDefault();
+	}
+	 
+	function drag(ev) {
+	    ev.dataTransfer.setData("text", ev.target.id);
+	}
+	 
+	function drop(ev) {
+	    ev.preventDefault();
+	    var data = ev.dataTransfer.getData("text");
+	    ev.target.appendChild(document.getElementById(data));
+	}
+	</script>
+</body>
+</html>

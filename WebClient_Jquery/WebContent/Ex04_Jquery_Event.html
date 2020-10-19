@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('btncopy').click(function(){
+				//let data = $('#txtuserid').val();
+				//$('#txtcopyuserid').val(data);
+				$('#txtcopyuserid').val($('#txtuserid').val());
+			});
+			
+			//select 태그 : change()
+			$('#select_hobby').change(function(e){
+				const text = $(':selected').text();
+				const text2 = $('#select_hobby option:selected').text();
+				const val = $('#select_hobby').val();
+				//value 속성이 없으면 text를 밸류로 인정한다.
+				console.log(text + "/" + text2 + "/" + val);
+			});
+			
+			$('#txtpwd2').keyup(function(e){
+				const txtpwd = $('#txtpwd').val();
+				if($('#txtpwd').val() != $('#txtpwd2').val()){
+					$('#message').text('<h3>암호 일치 X</h3>');
+				} else{
+					$('#message').html('<h3>암호 일치 X</h3>');
+				}
+			});
+			
+			//console.log($('input'));	// body 안에 있는 모든 input 태그 전체
+			$('input').focus(function(e){	// <= 활용도가 제일 높은 함수방법 : 모든 태그 중 this로 찾는 것
+				console.log($(this));	// 10개의 인풋태그가 있더라도, 현재 선택한 input태그를 가져올 수 있다.
+				$(this).css('background-color', 'gray');
+			});
+			
+			$('input').blur(function(e){	// blur : focus가 떠날 때
+				console.log($(this));	// 10개의 인풋태그가 있더라도, 현재 선택한 input태그를 가져올 수 있다.
+				$(this).css('background-color', 'transparent');
+			});
+			
+			// toggle과 같은 원리를 가지고 있는 이벤트 : 1개의 이벤트가 2개의 함수를 가지는 것
+			// https://api.jquery.com/toggle-event/
+			// 그것은 바로 호버
+			$('p').hover(function(e){
+				$(this).css("background-color", "gold"); // mouse over
+			}, function(e){
+				$(this).css("background-color", "red");	// mouse out
+			});
+			// https://api.jquery.com/ 검색해서 찾아보고 예제 돌려보는 습관을 들이는 것이 좋다. 
+		});
+		
+	</script>
+</head>
+<body>
+	<p>Jquery hover(mouseover , mouseleave)</p>
+	
+	ID:<input type="text" id="txtuserid">
+	<hr>
+	<input type="button" id="btncopy" value="copy">
+	<hr>
+	Copy ID:<input type="text" id="txtcopyuserid">
+	
+	<hr>
+	<select id="select_hobby">
+		<option value="JAVA">java</option>
+		<option>script</option>
+		<option>jdbc</option>
+	</select>
+	<br>
+	<input type="text" id="txtselect">
+	<hr>
+	<table style="border: 1px solid red;">
+		<tr>
+			<td>암호</td>
+			<td>
+				<input type="text" id="txtpwd" size="20" maxlength="5">
+			</td>
+		</tr>
+		<tr>
+			<td>암호확인</td>
+			<td>
+				<input type="text" id="txtpwd2" size="20" maxlength="5">
+			</td>
+		</tr>
+	</table>
+	<div id="message" style="color: red"></div>
+</body>
+</html>

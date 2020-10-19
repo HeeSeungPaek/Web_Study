@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+</head>
+<body>
+	<p id="demo"></p>
+	<p id="demo2"></p>
+	<script type="text/javascript">
+		// 함수축약표현식
+		// == 화살표 함수
+		
+		// 일반함수
+		var foo = function() {console.log("foo");}
+		foo();
+		
+		// 화살표 함수
+		// 매개변수 (parameter)가 없을 때
+		var bar = () => console.log("bar");
+		bar();
+		
+		// 매개변수가 1개 있는 화살표 함수
+		// 일반함수 : var foo2 = function(x) {x}
+		var foo2 = x => x;
+		
+		var hello;
+
+		hello = val => "Hello " + val;
+		// 덜 생략하면 hello = (val) => "Hello" + val;
+		document.getElementById("demo").innerHTML = hello("Universe!");
+		
+		// 매개변수가 여러개인 경우
+		var foo3 = (a,b) => {return a+b};
+		
+		var foo4 = (a,b) => {var c = d; return a+b+c};
+		
+		// **객체를 반환할 때 : 괄호로 중괄호를 감싼다
+		var foo5 = () => ({a:1, b:2, c:3});
+		foo5();
+		
+		// 즉시 실행 함수 : 호출하지 않고 바로 실행한다.
+		(
+			function(){
+				// 구문
+			}()
+		);
+		
+		// 즉시 실행 함수를 화살표 표기로 만들면.. : 즉시 실행 함수를 화살표 표현식으로..
+		(
+			() => {}	
+		)();
+		
+		// 이 축약표현을 여러곳에서도 쓰고 있다..
+		// JAVA : 람다식이란 이름으로..
+		// C#, java8, coffeesScript, 등에서 축약형 함수표현식을 사용하고 있다.
+		
+		// formal for문
+		// for(let i=0; i<10; i++){}
+		
+		// enhanced for
+		// for(let index in Array){}
+		// for(let key in Object){}
+		
+		// Array.isArray();
+		// Array.forEach();
+		// Array.map();
+		// + Arrow Function과 결합하는 걸 쓸 수 있다면..
+		
+		// forEach
+		var txt = "";
+		var numbers = [45, 4, 9, 16, 25];
+		numbers.forEach(myFunction2);	// 콜백함수
+		document.getElementById("demo").innerHTML = txt;
+		
+		function myFunction(value) {
+			txt = txt + value + "<br>"; 
+		}
+		
+		// 콜백함수 첫번째 파라미터는 는 배열의 value, 두번째는 인덱스, 세번째는 배열 전체의 toString
+		function myFunction2(value, index, array) {
+			txt = txt + value + " [" + index + "], " + "[" + array + "]" + "<br>"; 
+		}
+		
+		// map()
+		var numbers1 = [45, 4, 9, 16, 25];
+		var numbers2 = numbers1.map(myFunction);
+
+		function myFunction(value, index, array) {
+		  return value * 2;
+		}
+		
+		//https://www.w3schools.com/js/js_array_iteration.asp 여기를 참조합니다.
+		
+		var evens = [2,4,6,8];
+		var odds = evens.map(val => val+1);	// 콜백함수의 파라미터 val 하나를 받아 val+1을 리턴한다.
+		console.log(odds);
+		
+		var nums = evens.map((val,index) => val + index);
+		console.log(nums);
+		
+		var fives = [];
+		evens.forEach( val => {
+			if(val%2===0){
+				fives.push(val);
+			}
+		});
+		console.log(fives);
+	</script>
+</body>
+</html>
