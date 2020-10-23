@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- https://tdremon.tistory.com/entry/Modal%EA%B3%BC-Modeless%EC%9D%98-%EC%B0%A8%EC%9D%B4
+	모달과 모달리스의 차이를 알아두자 -->
+
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/sunny/jquery-ui.css">
+	<script type="text/javascript">
+		$(function(){
+			
+			$('#datePicker').datepicker(
+				{dateFormat:"yy년 mm월 dd일"}
+			);
+			
+			$('#dialog').dialog(
+				{
+					autoOpen:false,
+					show:{
+						effect:"explode",
+						duration:500
+					},
+					hide:{
+						effect:"blind",
+						duration:500
+					},
+					buttons:{
+						"확인":function(){
+							$(this).dialog('close');
+						},
+						"취소":function(){
+							$(this).dialog('close');
+						}
+					},
+					resizable:false,
+					modal: true	// 팝업을 닫기 전까지는 부모창에 대한 접근이 불가합니다.
+				}
+			);
+			
+			$('#opener').click(function(){
+				$('#dialog').dialog("open");
+			});
+		});
+	</script>
+</head>
+<body>
+	<p>일반 컨텐츠</p>
+	Date:<input type="text" id="datePicker">
+	<hr>
+	<button id="opener">Open Popup</button>
+	<div id="dialog" title="Basic dialog">
+		<p>오늘은 수요일</p>
+	</div>
+</body>
+</html> 

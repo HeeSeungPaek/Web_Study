@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<!-- 필수 Jquery.min.js -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
+	<!-- Jquery UI >> css(디자인요소), js(그 요소들의 이벤트와 기능을 제공) -->
+	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/sunny/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	<style>
+		#draggable { width: 150px; height: 150px; padding: 0.5em; }
+	</style>
+	
+	<script type="text/javascript">
+		$(function(){
+			$('#draggable').draggable();
+		});
+	</script>
+</head>
+<body>
+	<div id="draggable" class="ui-widget-content">
+		<p>허리아파</p>
+	</div>
+</body>
+</html>

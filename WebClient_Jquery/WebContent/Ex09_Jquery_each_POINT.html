@@ -15,8 +15,15 @@
 				1번. $(selector).each(function(){this 활용})
 				2번. $(selector).each(function(index){this 활용})
 				3번. $(selector).each(function(index, element){element}); << 제일 편하기에 많이 사용된다.
-		*/
 		
+			Jquery : each() 반복구문 다른 문법
+				1번. $.each(Array or Object, function(){this 활용})
+				2번. $.each(Array or Object, function(index){this 활용})
+				3번. $.each(Array or Object, function(index, element){element}); << 위 3번보다 이걸 쓰는 것이 좋다.***
+			
+			parameter가 JSON 객체라면
+			var obj = {name:"hong", age:100}
+		*/
 		
 		$(document).ready(function(){
 			
@@ -28,19 +35,95 @@
 			
 			//2번 유형
 			$("p").each(function(index){
-				console.log("index : " + index);
-				console.log("this : " + $(this).text());
+				//console.log("index : " + index);
+				//console.log("this : " + $(this).text());
+				
+				// index 활용하기 (중복값이 없습니다.)
+				// == 식별자의 역할으로 사용할 수도 있을 것이다.
+				//$(this).attr("id","param-"+index);	// 이런 식으로 사용한다면, 중복되지 않고 순차적으로 id를 줄 수도 있다.
+				
+				// 응용해보자 attr >> 속성을 여러개 부여 >> "Jquery는 parameter로 다중값 처리를 위해 JSON 객체를 받을 수 있다"********
+				$(this).attr(
+					{
+						"id":"param-" + (index + 1),
+						"style":"color:red",
+					}
+				);
 			});
 			
 			//3번 유형
-			$("p").each(function(index, element){
+			$("p").each(function(index, element){	// 70%
 				console.log("index : " + index);
 				console.log(element);
 				console.log("this : " + $(this).text());
 			});
+			
+			
+			// ----------------------------------------------------------------------
+			$("#btn").click(function(){
+				alert($("#param-1").text());
+			});
+			
+			/* 
+				let arr = ["안녕", "수고했어", "사랑합니다."];	// Array
+				let obj = {}								// JSON
+				let arrobj = [{}, {}, {}];					// ArrayObject
+			*/
+			
+			var array = [
+				{name:"naver", link:"www.naver.com"},
+				{name:"daum" , link:"www.daum.net"},
+				{name:"bit"  , link:"www.bit.or.kr"}
+			];
+				
+			// 문제1 : $.each(Array or Object, function(index, element){element});
+			// name 값, link 값을 출력하라
+			/* $.each(array, function(index, element) {
+				console.log("array Name[" + index + "] = " + array[index].name);
+				console.log("array Elem[" + index + "] = " + array[index].link);
+				
+				console.log(element);
+				console.log(element.name);
+				console.log(element["link"]);
+			}); */
+			
+			// 문제2 : 게시판 데이터가 JSON객체로 있다고 가정하자.
+			let boardobj = {
+				values:[
+					{no:1 , title:"hello world"},
+					{no:2 , title:"korea"},
+					{no:3 , title:"bit world"}
+				],
+				search:"검색"
+			};
+			
+			//1. $.each() 사용해서 no 값, title 값을 출력하세요.
+			$.each(boardobj.values, function(index, element){
+				console.log(index + "/" + element.no + "," + element["title"]); 
+			});
+			
+			
+			//2. $.each(board) >> key, value 값을 출력하세요.
+			$.each(boardobj, function(key, value){
+				console.log(key + "/" + value);
+			});
+			
+			//3. $.each() 사용하여 no, title, search가 가지고 있는 값을 출력해라
+			//hint : each(){each()}
+			// KeyPoint
+			$.each(boardobj, function(key, value){
+				// value >> text, Array, {}
+				// value 값에 따라 type에 대한 비교
+				if(typeof(value)=="object"){	// 배열인 경우
+					$.each(value, function(index, element){
+						console.log(element.no + "/" + element["title"]);
+					});
+				} else{	// text인 경우
+					console.log(key + "/" + value)
+				}
+			});
 		});
 
-			
 	</script>
 </head>
 <body>
